@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
-import List from "./pages/List";
-import Form from "./pages/Form";
+import Home from "./Pages/Home";
+import List from "./Pages/List";
+import Form from './Pages/Form';
 
 
 export default function App() {
