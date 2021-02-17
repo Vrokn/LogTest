@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
-const Login = () => {
+const Login = ({ history }) => {
+  const [state, setState] = useState({ email: "", password: "" });
+  async function login(e) {
+    //llamado a Axios
+    e.preventDefault();
+    const response = await axios.post("/register", state);
+    console.log("response", response);
+    history.push("/");
+  }
   return (
     <div className="App">
       <h1>Log In</h1>
       <div>
         <div class="bs-example">
-          <form method="post">
+          <form onSubmit={login}>
             <label class="col-sm-2 col-form-label" for="email">
               E-mail:
               <input
                 class="form-control"
                 id="email"
                 type="email"
-                name="email"
+                onChange={(e) => setState({ ...state, email: e.target.value })}
+                value={state.email}
                 placeholder="Ingrese su Email"
                 required
               />
@@ -24,7 +34,10 @@ const Login = () => {
                 class="form-control"
                 id="password"
                 type="password"
-                name="password"
+                onChange={(e) =>
+                  setState({ ...state, password: e.target.value })
+                }
+                value={state.password}
                 placeholder="Ingrese su Password"
                 required
               />

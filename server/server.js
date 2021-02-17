@@ -5,7 +5,6 @@ const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
 require("dotenv").config({ path: "./variables.env" });
 const app = express();
-console.log(process.env.DB_URL);
 
 mongoose
   .connect(process.env.DB_URL, {
@@ -58,7 +57,6 @@ app.use(
 app.use(express.static(publicPath));
 app.use(express.json());
 app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true }));
 
 const requireUser = async (req, res, next) => {
   const userId = req.session.userId;
@@ -78,7 +76,7 @@ app.post("/register", async (req, res) => {
   const password = bcrypt.hashSync(req.body.password, 10);
   const user = new Users({ name: name, email: email, password: password });
   await user.save();
-  res.status(200).send('hola mundo');
+  res.status(200).json({ status: "OK" });
 });
 
 app.post("/login", async (req, res) => {
@@ -91,14 +89,22 @@ app.post("/login", async (req, res) => {
       req.session.userId = user._id; // acá guardamos el id en la sesión
       return res.status(200);
     } else {
-      res.status(500, { error: "Wrong email or password. Try again!" });
+      res.status(401, { error: "Wrong email or password. Try again!" });
     }
   } catch (e) {
     return res.status(500).send(e);
   }
 });
-app.get("*", async (req, res) => {
+
+app.get("/", requireUser, async (req, res) => {
   const users = await Users.find();
+  if (!users) {
+    return res.redirect("/login");
+  }
+  res.status(200).json({ status: "OK" });
+});
+
+app.get("*", async (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
