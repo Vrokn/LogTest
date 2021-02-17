@@ -71,6 +71,7 @@ const requireUser = async (req, res, next) => {
     return res.redirect("/login");
   }
 };
+
 app.get("/api/getList", (req, res) => {
   var list = ["item1", "item2", "item3"];
   res.json(list);
@@ -97,13 +98,13 @@ app.post("/login", async (req, res) => {
       req.session.userId = user._id; // acá guardamos el id en la sesión
       return res.redirect("/");
     } else {
-      res.render("/login", { error: "Wrong email or password. Try again!" });
+      res.redirect("/login", { error: "Wrong email or password. Try again!" });
     }
   } catch (e) {
     return res.status(500).send(e);
   }
 });
-app.get("*", async (req, res) => {
+app.get("/", async (req, res) => {
   const users = await Users.find();
   res.sendFile(path.join(publicPath, "index.html"));
 });

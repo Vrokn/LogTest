@@ -6,11 +6,11 @@ const Home = () => {
       <div className="App">
         <h1>Project Home</h1>
         {/* Link to List.js */}
-        <Link to={"./list"}>
-          <button variant="raised">My List</button>
+        <Link to={"./login"}>
+          <button variant="raised">Log In</button>
         </Link>
         <Link to={"./register"}>
-          <button variant="raised">Ir al formulario </button>
+          <button variant="raised">Sing In</button>
         </Link>
       </div>
     );
