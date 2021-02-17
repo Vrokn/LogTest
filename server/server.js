@@ -3,14 +3,12 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
-
+require("dotenv").config({ path: "./variables.env" });
 const app = express();
-
-const uri =
-  "mongodb+srv://vrokn:Makakito2@cluster0.cd93d.mongodb.net/vrokn?retryWrites=true&w=majority";
+console.log(process.env.DB_URL);
 
 mongoose
-  .connect(uri, {
+  .connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -47,6 +45,7 @@ const Users = mongoose.model("Users", UsersSchema);
 const path = require("path");
 const publicPath = path.join(__dirname, "..", "build");
 const port = process.env.PORT || 3000;
+const host = process.env.HOST || "0.0.0.0";
 
 app.use(
   cookieSession({
@@ -109,6 +108,6 @@ app.get("/", async (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
-app.listen(port, () => {
+app.listen(port, host, () => {
   console.log("Server is up!");
 });
