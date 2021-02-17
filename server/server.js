@@ -78,7 +78,7 @@ app.post("/register", async (req, res) => {
   const password = bcrypt.hashSync(req.body.password, 10);
   const user = new Users({ name: name, email: email, password: password });
   await user.save();
-  res.status(200);
+  res.status(200).send('hola mundo');
 });
 
 app.post("/login", async (req, res) => {
