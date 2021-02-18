@@ -1,0 +1,40 @@
+.users {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+.usersTable {
+  background-color: lightblue;
+  min-width: 320px;
+  color: black;
+}
+table,
+th,
+td {
+  border: 1px solid black;
+}
+td {
+  padding: 0.5em;
+  border: 1px solid black;
+}
+table {
+  border-collapse: collapse;
+}
+.saveBtn {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Quicksand", sans-serif;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  max-width: 100px;
+}
+.users a {
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+}

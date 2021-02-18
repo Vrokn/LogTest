@@ -41,10 +41,15 @@ const Login = ({ history }) => {
               required
             />
           </label>
-          ¿No tienes una cuenta?<Link to={"./register"}>Registrate</Link>
-          <button class="loginBtn" type="submit">
-            Ingresa
-          </button>
+          <p>
+            ¿No tienes una cuenta? <Link to={"./register"}> Registrate</Link>
+          </p>
+          <div>
+            <button class="loginBtn" type="submit">
+              Ingresa
+            </button>
+              <Link to={"./"}> Volver </Link>
+          </div>
         </form>
       </div>
     </div>

@@ -18,7 +18,28 @@ const host = process.env.HOST || "0.0.0.0";
 
 app.use(express.static(publicPath));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // for parsing application/json
+
+app.post("/users" , async (req, res) => {
+  const { name, email, password, role } = req.body;
+    try {
+      let user = await Users.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ msg: "User don't Exists" });
+      }
+      user = new Users({ name, email, password });
+      user.password = await bcrypt.hash(password, 10);
+      await user.save();
+      const payload = { user: { id: user.id } };
+      jwt.sign(payload, "randomString", { expiresIn: 10000 }, (err, token) => {
+        if (err) throw err;
+        res.status(200).json({ token });
+      });
+    } catch (e) {
+    res.send({ message: "Error in Fetching users" });
+  }
+});
 
 app.post(
   "/register",
@@ -93,6 +114,16 @@ app.post(
     }
   }
 );
+
+app.get("/usersdata", async (req, res) => {
+  try {
+    // request.user is getting fetched from Middleware after token authentication
+    const createdUsers = await Users.find({});
+    res.json(createdUsers);
+  } catch (e) {
+    res.send({ message: "Error in Fetching users" });
+  }
+});
 
 app.get("/", auth, async (req, res) => {
   try {

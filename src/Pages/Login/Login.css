@@ -44,7 +44,6 @@
   box-sizing: border-box;
   z-index: 1;
   justify-content: space-between;
-
 }
 .login h1 {
   margin: 0;
@@ -52,8 +51,8 @@
   color: #fff;
   margin: 1em;
 }
-.formLabel{
-    color: rgb(226, 226, 226);
+.formLabel {
+  color: rgb(226, 226, 226);
 }
 .formInput {
   font-family: "Quicksand", sans-serif;
@@ -82,8 +81,7 @@
   font-family: "Quicksand", sans-serif;
   color: rgba(255, 255, 255, 0.473);
 }
-.registerForm a {
-  font-size: 14px;
+.loginForm a {
   color: rgba(255, 255, 255, 0.3);
   text-decoration: none;
 }

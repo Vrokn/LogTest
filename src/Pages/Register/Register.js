@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Register.css";
+import { Link } from "react-router-dom";
 
 const Register = ({ history }) => {
   const [state, setState] = useState({ email: "", name: "", password: "" });
@@ -52,9 +53,15 @@ const Register = ({ history }) => {
               required=""
             />
           </label>
-          <button className={"registerBtn"} type="submit">
-            Registrarse
-          </button>
+          <p>
+            ¿Ya tienes una cuenta? <Link to={"./login"}> Ingresa</Link>{" "}
+          </p>
+          <div>
+            <button className={"registerBtn"} type="submit">
+              Registrarse
+            </button>
+            <Link to={"./"}> Volver </Link>
+          </div>
         </form>
       </div>
     </div>
