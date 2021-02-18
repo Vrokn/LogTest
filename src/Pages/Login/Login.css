@@ -1,0 +1,89 @@
+.login {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+  flex-direction: column;
+}
+.formContainer {
+  min-width: 320px;
+  border-radius: 0.5em;
+  width: 40vw;
+  min-height: 30vh;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
+}
+.formContainer::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(45deg, #ff004821, #6fff0021);
+  animation: animar 10s linear infinite;
+}
+@keyframes animar {
+  0% {
+    filter: blur(60px) hue-rotate(0deg);
+  }
+  100% {
+    filter: blur(60px) hue-rotate(360deg);
+  }
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 3em;
+  box-sizing: border-box;
+  z-index: 1;
+  justify-content: space-between;
+
+}
+.login h1 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  margin: 1em;
+}
+.formLabel{
+    color: rgb(226, 226, 226);
+}
+.formInput {
+  font-family: "Quicksand", sans-serif;
+
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+}
+.loginBtn {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Quicksand", sans-serif;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  max-width: 100px;
+}
+::placeholder {
+  font-family: "Quicksand", sans-serif;
+  color: rgba(255, 255, 255, 0.473);
+}
+.registerForm a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+}
