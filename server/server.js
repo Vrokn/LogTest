@@ -6,9 +6,8 @@ const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Users = require("./model/Users");
-const auth = require("./middleware/auth");
-
 const app = express();
+const auth = require("./middleware/auth");
 
 InitiateMongoServer();
 
@@ -18,6 +17,7 @@ const port = process.env.PORT || 3000;
 const host = process.env.HOST || "0.0.0.0";
 
 app.use(express.static(publicPath));
+app.use(express.json());
 app.use(bodyParser.json()); // for parsing application/json
 
 app.post(
