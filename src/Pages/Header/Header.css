@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color:lightblue;
+  background-color: lightblue;
   transition: 0.3s;
   min-height: 100px;
 }
@@ -49,20 +49,25 @@
   background-color: #142438;
   transition: 0.3s;
 }
-.signUpLinks {
+.signUpLinks,
+.logout {
   margin: 1em 2em;
+}
+.headLinks {
+  display: flex;
+  align-items: center;
 }
 .signUpBtn {
   transition: 0.3s;
   padding: 0.5em;
   cursor: pointer;
-  font-family: Quicksand;
+  font-family: "Quicksand", sans-serif;
   font-size: 18px;
   letter-spacing: 0.05em;
   border: none;
   outline: none;
   background: transparent;
 }
-.hidden{
+.hidden {
   display: none;
 }

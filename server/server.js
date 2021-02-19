@@ -143,7 +143,7 @@ app.get("/coursesdata", async (req, res) => {
 });
 
 app.post(
-  "/courses",
+  "/createCourse",
   [
     check("name", "Please Enter a Valid Course Name").not().isEmpty(),
     check("description", "Please Enter a Valid Description").not().isEmpty(),
@@ -155,13 +155,13 @@ app.post(
         errors: errors.array(),
       });
     }
-    const { name, description } = req.body;
+    const { title, description, image } = req.body;
     try {
-      let course = await Courses.findOne({ name });
+      let course = await Courses.findOne({ title });
       if (course) {
         return res.status(400).json({ error: "Course Already Exists" });
       }
-      course = new Courses({ name, description });
+      course = new Courses({ title, description, image });
       await course.save();
     } catch (err) {
       console.log(err.message);
@@ -169,6 +169,11 @@ app.post(
     }
   }
 );
+
+app.post("/courses", (req, res) => {
+  const { title, instructors } = req.body;
+  console.log(title, instructors)
+});
 
 app.get("/", auth, async (req, res) => {
   try {

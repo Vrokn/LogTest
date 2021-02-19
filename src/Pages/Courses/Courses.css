@@ -1,0 +1,37 @@
+.courses {
+  padding: 3em;
+}
+.coursesContainer {
+  display: block;
+}
+.course {
+  display: inline-block;
+  width: 45%;
+  margin: 1.5em;
+}
+.course h1 {
+  color: lightblue;
+}
+.courseImage {
+  display: flex;
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+}
+.courseSub {
+  color: black;
+  background-color: lightblue;
+  padding: 0.5em 1em;
+  border: none;
+  font-family: "Quicksand", sans-serif;
+}
+.coursesOptions a {
+  margin: 1em;
+  padding: 1em;
+  text-decoration: none;
+  color: lightblue;
+}
+.courseInstructors{
+    color: lightblue;
+    font-size: 14px;
+}

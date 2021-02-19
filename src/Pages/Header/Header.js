@@ -17,17 +17,32 @@ const Header = ({ history }) => {
   return (
     <div className={bgColor ? "bgdark" : "bgligth"}>
       <div className={bgColor ? "hddark" : "hdligth"}>
-        <Link
-          onMouseOver={() => {
-            setBgColor(true);
-          }}
-          onMouseLeave={() => {
-            setBgColor(false);
-          }}
-          to={"./"}
-        >
-          <p>MMLTEST</p>
-        </Link>
+        <div className={"headLinks"}>
+          <Link
+            onMouseOver={() => {
+              setBgColor(true);
+            }}
+            onMouseLeave={() => {
+              setBgColor(false);
+            }}
+            to={"./"}
+          >
+            <p>LOGTEST</p>
+          </Link>
+          <Link
+            className={isauth ? "userLink" : "hidden"}
+            onMouseOver={() => {
+              setBgColor(true);
+            }}
+            onMouseLeave={() => {
+              setBgColor(false);
+            }}
+            to={"./courses"}
+          >
+            <button className={"signUpBtn"}>Courses</button>
+          </Link>
+        </div>
+
         <div className={isauth ? "hidden" : "signUpLinks"}>
           <Link
             onMouseOver={() => {
@@ -53,6 +68,18 @@ const Header = ({ history }) => {
           </Link>
         </div>
         <div className={isauth ? "logout" : "hidden"}>
+          <Link
+            className={admin ? "userLink" : "hidden"}
+            onMouseOver={() => {
+              setBgColor(true);
+            }}
+            onMouseLeave={() => {
+              setBgColor(false);
+            }}
+            to={"./createCourse"}
+          >
+            <button className={"signUpBtn"}>CreateCourse</button>
+          </Link>
           <Link
             className={admin ? "userLink" : "hidden"}
             onMouseOver={() => {

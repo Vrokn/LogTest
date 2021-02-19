@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 
 const CoursesSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
+  },
+  image: {
+    type: String,
+    default:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png",
   },
   description: {
     type: String,
@@ -14,7 +19,7 @@ const CoursesSchema = new mongoose.Schema({
     required: true,
     default: [],
   },
-  suscriptors: {
+  subscribers: {
     type: Array,
     required: true,
     default: [],
