@@ -14,6 +14,12 @@
   letter-spacing: 0.05em;
   color: #000;
 }
+.hdligth a {
+  text-decoration: none;
+}
+.hddark a {
+  text-decoration: none;
+}
 .hddark {
   transition: 0.3s;
   display: flex;
@@ -56,4 +62,7 @@
   border: none;
   outline: none;
   background: transparent;
+}
+.hidden{
+  display: none;
 }

@@ -1,24 +1,20 @@
 const mongoose = require("mongoose");
 
-const UsersSchema = new mongoose.Schema({
+const CoursesSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-  email: {
+  description: {
     type: String,
     required: true,
   },
-  password: {
-    type: String,
+  instructors: {
+    type: Array,
     required: true,
+    default: [],
   },
-  role: {
-    type: String,
-    required: true,
-    default: "User",
-  },
-  courses: {
+  suscriptors: {
     type: Array,
     required: true,
     default: [],
@@ -29,4 +25,4 @@ const UsersSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Users", UsersSchema);
+module.exports = mongoose.model("Courses", CoursesSchema);

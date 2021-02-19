@@ -9,18 +9,20 @@
   background-color: lightblue;
   min-width: 320px;
   color: black;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  box-shadow: 0px 0px 50px -20px #ffffff;
 }
 table,
 th,
 td {
   border: 1px solid black;
-}
-td {
-  padding: 0.5em;
-  border: 1px solid black;
-}
-table {
+  margin: 0.5em 0.5em;
   border-collapse: collapse;
+  padding: 0.2em 0.5em;
+}
+.roleDrop {
+  padding: 0.5em;
 }
 .saveBtn {
   background: #fff;
@@ -31,10 +33,38 @@ table {
   cursor: pointer;
   font-family: "Quicksand", sans-serif;
   padding: 0.5em 1em;
-  margin: 1em 0;
   max-width: 100px;
 }
 .users a {
   color: rgba(255, 255, 255, 0.3);
   text-decoration: none;
+}
+.usersOptions {
+  display: flex;
+  align-items: center;
+}
+.usersOptions p {
+  margin: 1em;
+}
+
+.hidden {
+  display: none;
+}
+select,
+option {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  font-size: 0.9em;
+}
+.users p {
+  margin: 0.5em;
+}
+select {
+  background: none;
+  border: none;
+  outline: none;
+}
+td{
+  padding: 0 0.5em;
 }

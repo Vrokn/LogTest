@@ -8,7 +8,7 @@ const Register = ({ history }) => {
   async function register(e) {
     //llamado a Axios
     e.preventDefault();
-    const response = await axios.post("/register", state);
+    const response = await axios.post("http://localhost:3030/register", state);
     console.log("response", response);
     history.push("/login");
   }

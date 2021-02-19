@@ -5,15 +5,18 @@ import Home from "./Pages/Home/Home";
 import Register from "./Pages/Register/Register";
 import Login from "./Pages/Login/Login";
 import Users from "./Pages/Users/Users";
+import Cookies from "js-cookie";
 
 export default function App() {
+  const user = Cookies.get("user");
+  const admin = user ? JSON.parse(user)?.role === "Admin" : false;
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={Home} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
-        <Route path="/users" component={Users} />
+        {admin && <Route path="/users" component={Users} />}
+        <Route path="/" component={Home} />
       </Switch>
     </div>
   );
