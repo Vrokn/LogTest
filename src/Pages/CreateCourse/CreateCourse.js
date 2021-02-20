@@ -8,10 +8,7 @@ const CreateCourse = ({ history }) => {
   async function register(e) {
     //llamado a Axios
     e.preventDefault();
-    const response = await axios.post(
-      "http://localhost:3030/createCourse",
-      state
-    );
+    const response = await axios.post("/createCourse", state);
     console.log("response", response);
     history.push("/courses");
   }

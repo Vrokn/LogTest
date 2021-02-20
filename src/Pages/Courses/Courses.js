@@ -16,7 +16,7 @@ const Courses = ({ history }) => {
   const username = JSON.parse(user)?.name;
 
   async function makeGetRequest() {
-    let res = await axios.get("http://localhost:3030/coursesdata");
+    let res = await axios.get("/coursesdata");
     let data = res.data;
     setCourses(data);
   }
@@ -29,7 +29,7 @@ const Courses = ({ history }) => {
       title: courses[index].title,
     }); */
     e.preventDefault();
-    const response = await axios.post("http://localhost:3030/courses", state);
+    const response = await axios.post("/courses", state);
     console.log("response", response);
   }
   async function enroll(e) {
@@ -40,7 +40,7 @@ const Courses = ({ history }) => {
       title: courses[index].title,
     }); */
     e.preventDefault();
-    const response = await axios.post("http://localhost:3030/courses", state);
+    const response = await axios.post("/courses", state);
     console.log("response", response);
   }
   useEffect(() => {

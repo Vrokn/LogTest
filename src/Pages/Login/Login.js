@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Login.css";
 import { Link } from "react-router-dom";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 
 const Login = ({ history }) => {
   const [state, setState] = useState({ email: "", password: "" });
-  
+
   function seeCookie(data) {
-    Cookies.set("token", data.token)
-    Cookies.set("user", data.user)
+    Cookies.set("token", data.token);
+    Cookies.set("user", data.user);
   }
 
   async function login(e) {
     //llamado a Axios
     e.preventDefault();
-    const response = await axios.post("http://localhost:3030/login", state);
+    const response = await axios.post("/login", state);
     console.log("response", response);
     if (response.data.token) {
       seeCookie(response.data);

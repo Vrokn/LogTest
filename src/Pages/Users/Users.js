@@ -11,14 +11,14 @@ const Users = ({ history }) => {
   const [editing, setEditing] = useState(false);
 
   async function makeGetRequest() {
-    let res = await axios.get("http://localhost:3030/usersdata");
+    let res = await axios.get("/usersdata");
     let data = res.data;
     setUsers(data);
     console.log("usuarios", data);
   }
   async function update(e) {
     e.preventDefault();
-    const response = await axios.post("http://localhost:3030/users", state);
+    const response = await axios.post("/users", state);
     console.log(response.data);
   }
   useEffect(() => {
