@@ -31,7 +31,11 @@
   text-decoration: none;
   color: lightblue;
 }
-.courseInstructors{
-    color: lightblue;
-    font-size: 14px;
+.courseInstructors {
+  color: lightblue;
+  font-size: 14px;
+}
+ul {
+  padding: 0%;
+  list-style-type: none;
 }

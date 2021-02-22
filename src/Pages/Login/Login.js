@@ -4,32 +4,47 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
+import { useAuth } from "../../utils/auth";
+
+function setCookie(data) {
+  Cookies.set("token", data.token);
+  Cookies.set("user", data.user);
+}
+
+async function login(state) {
+  //llamado a Axios
+  const response = await axios.post("/login", state);
+
+  if (response.data.token) {
+    setCookie(response.data);
+
+    return response.data.user;
+  } else {
+    console.error(response.data);
+    throw new Error(response.data);
+  }
+}
+
 const Login = ({ history }) => {
   const [state, setState] = useState({ email: "", password: "" });
+  const { setUser } = useAuth();
 
-  function seeCookie(data) {
-    Cookies.set("token", data.token);
-    Cookies.set("user", data.user);
-  }
-
-  async function login(e) {
-    //llamado a Axios
-    e.preventDefault();
-    const response = await axios.post("/login", state);
-    console.log("response", response);
-    if (response.data.token) {
-      seeCookie(response.data);
-      history.push("/");
-    } else {
-      console.error(response.data);
-    }
-  }
   return (
     <div className="login">
       <h1>Inicio de sesión</h1>
       <div className="formContainer">
-        <form className={"loginForm"} onSubmit={login}>
-          <label className="formLabel" for="email">
+        <form
+          className={"loginForm"}
+          onSubmit={(event) => {
+            event.preventDefault();
+
+            login(state).then((user) => {
+              setUser(user);
+              history.push("/");
+            });
+          }}
+        >
+          <label className="formLabel">
             E-mail:
             <input
               className="formInput"
@@ -41,7 +56,7 @@ const Login = ({ history }) => {
               required
             />
           </label>
-          <label className="formLabel" for="password">
+          <label className="formLabel">
             Contraseña:
             <input
               className="formInput"

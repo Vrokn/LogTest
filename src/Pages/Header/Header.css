@@ -37,7 +37,6 @@
   color: lightblue;
 }
 .hddark .signUpBtn {
-  transition: 0.3s;
   font-size: 20px;
   color: lightblue;
 }
@@ -54,8 +53,11 @@
   margin: 1em 2em;
 }
 .headLinks {
-  display: flex;
   align-items: center;
+  display: flex;
+}
+.headLinks * {
+  transition: 0.3s;
 }
 .signUpBtn {
   transition: 0.3s;
@@ -67,7 +69,4 @@
   border: none;
   outline: none;
   background: transparent;
-}
-.hidden {
-  display: none;
 }

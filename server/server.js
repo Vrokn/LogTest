@@ -16,7 +16,7 @@ const Courses = require("./model/Courses");
 
 const path = require("path");
 const publicPath = path.join(__dirname, "..", "build");
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3000;
 const host = process.env.HOST || "0.0.0.0";
 
 app.use(cors());
@@ -133,7 +133,7 @@ app.get("/usersdata", async (req, res) => {
   }
 });
 
-app.get("/coursesdata", async (req, res) => {
+app.get("/courses", async (req, res) => {
   try {
     const createdCourses = await Courses.find({});
     res.json(createdCourses);
@@ -145,7 +145,7 @@ app.get("/coursesdata", async (req, res) => {
 app.post(
   "/createCourse",
   [
-    check("name", "Please Enter a Valid Course Name").not().isEmpty(),
+    check("title", "Please Enter a Valid Course Name").not().isEmpty(),
     check("description", "Please Enter a Valid Description").not().isEmpty(),
   ],
   async (req, res) => {
@@ -170,9 +170,16 @@ app.post(
   }
 );
 
-app.post("/courses", (req, res) => {
-  const { title, instructors } = req.body;
-  console.log(title, instructors)
+app.post("/courses", async (req, res) => {
+  const { title, instructors, periods } = req.body;
+  console.log(title, instructors, periods);
+  await Courses.updateOne({ title }, { instructors, periods });
+  try {
+    const courses = await Courses.find({});
+    res.json(courses);
+  } catch (e) {
+    res.send({ error: "Error in Fetching Courses" });
+  }
 });
 
 app.get("/", auth, async (req, res) => {

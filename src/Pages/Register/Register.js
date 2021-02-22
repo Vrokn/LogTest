@@ -3,8 +3,9 @@ import axios from "axios";
 import "./Register.css";
 import { Link } from "react-router-dom";
 
-const Register = ({ history }) => {
+function Register({ history }) {
   const [state, setState] = useState({ email: "", name: "", password: "" });
+
   async function register(e) {
     //llamado a Axios
     e.preventDefault();
@@ -12,12 +13,13 @@ const Register = ({ history }) => {
     console.log("response", response);
     history.push("/login");
   }
+
   return (
     <div className={"register"}>
       <h1>Registrate</h1>
       <div className={"formContainer"}>
         <form className={"registerForm"} onSubmit={register}>
-          <label className={"formLabel"} for="name">
+          <label className={"formLabel"}>
             Nombre:
             <input
               onChange={(e) => setState({ ...state, name: e.target.value })}
@@ -29,7 +31,7 @@ const Register = ({ history }) => {
               required=""
             />
           </label>
-          <label className={"formLabel"} for="email">
+          <label className={"formLabel"}>
             Email:
             <input
               onChange={(e) => setState({ ...state, email: e.target.value })}
@@ -41,7 +43,7 @@ const Register = ({ history }) => {
               required=""
             />
           </label>
-          <label className={"formLabel"} for="password">
+          <label className={"formLabel"}>
             Contraseña:
             <input
               onChange={(e) => setState({ ...state, password: e.target.value })}
@@ -66,6 +68,6 @@ const Register = ({ history }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Register;

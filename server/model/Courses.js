@@ -19,10 +19,26 @@ const CoursesSchema = new mongoose.Schema({
     required: true,
     default: [],
   },
-  subscribers: {
+  periods: {
     type: Array,
     required: true,
     default: [],
+    subscribers: {
+      type: Array,
+      default: [],
+    },
+    start: {
+      type: Date,
+      required: true,
+    },
+    end: {
+      type: Date,
+      required: true,
+    },
+    by: {
+      type: String,
+      required: true,
+    },
   },
   createdAt: {
     type: Date,

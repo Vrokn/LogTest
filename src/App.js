@@ -9,12 +9,13 @@ import Account from "./Pages/Account/Account";
 import Courses from "./Pages/Courses/Courses";
 import CreateCourse from "./Pages/CreateCourse/CreateCourse";
 
-import Cookies from "js-cookie";
+import { useAuth } from "./utils/auth";
 
 export default function App() {
-  const user = Cookies.get("user");
-  const admin = user ? JSON.parse(user)?.role === "Admin" : false;
-  
+  const { user } = useAuth();
+
+  const admin = user?.admin;
+
   return (
     <div className="App">
       <Switch>
